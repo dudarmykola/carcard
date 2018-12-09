@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import './SignIn.scss';
 
-const SignIn = () => (
+export default () => (
     <div className="login-form">
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
@@ -31,5 +31,3 @@ const SignIn = () => (
         </Grid>
     </div>
 );
-
-export default SignIn;

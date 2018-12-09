@@ -1,34 +1,27 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Container } from 'semantic-ui-react';
+import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import Menu from '../Menu/index';
-import CarCardGroup from '../CardGroup/index';
+import CarCardGroup from '../../containers/CardGroup';
+import SignUp from '../../components/Auth/SignUp';
+import SignIn from '../../components/Auth/SignIn';
+import { connect } from 'react-redux';
 
 class App extends Component {
-  componentDidMount() {
-    const { onSetCars } = this.props;
-
-    axios.get('/cars.json').then(({data}) => {
-        onSetCars(data.data);
-    })
-  }
-
   render() {
-    const { cars, isReady } = this.props;
-
     return (
-        <div>
-            <Container>
+        <BrowserRouter>
+            <div>
                 <Menu />
-                { !isReady
-                    ? 'Loading...'
-                    :  <CarCardGroup cars={cars}/>
-                }
-            </Container>
-        </div>
+                <Switch>
+                    <Route path='/SignIn' component={SignIn} />
+                    <Route path='/SignUp' component={SignUp} />
+                    <Route path='/cars' component={CarCardGroup} />
+                </Switch>
+            </div>
 
+        </BrowserRouter>
     );
   }
 }
 
-export default App;
+export default connect()(App);
