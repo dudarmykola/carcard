@@ -1,9 +1,14 @@
 import { combineReducers } from 'redux';
-
-import cars from './cars';
+import { firestoreReducer } from 'redux-firestore';
+import { firebaseReducer } from 'react-redux-firebase';
+import carsReducer from './carsReducer';
+import authReducer from './authReducer';
 
 const rootReducer = combineReducers({
-    cars
+  authReducer: authReducer,
+  carsReducer: carsReducer,
+  firestoreReducer: firestoreReducer,
+  firebaseReducer: firebaseReducer
 });
 
 export default rootReducer;
