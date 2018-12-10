@@ -2,15 +2,11 @@ import { connect } from 'react-redux';
 import SignUp from '../components/Auth/SignUp';
 
 const mapStateToProps = state => {
-    return {
-
-    }
+  return {};
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-
-    }
+  return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

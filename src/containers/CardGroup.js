@@ -3,15 +3,15 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import CarCardGroup from '../components/CardGroup';
 
-const mapStateToProps = (state) => {
-    return {
-        cars: state.firestore.ordered.cars
-    }
+const mapStateToProps = state => {
+  return {
+    cars: state.firestoreReducer.ordered.cars
+  };
 };
 
 export default compose(
-    firestoreConnect([
-        { collection: 'cars' }
-    ]),
-    connect(mapStateToProps, null)
+  firestoreConnect([
+    { collection: 'cars' }
+  ]),
+  connect(mapStateToProps, null)
 )(CarCardGroup);

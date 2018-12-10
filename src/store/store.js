@@ -9,10 +9,10 @@ import fbConfig from '../config/fbConfig';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(rootReducer,
-    /* preloadedState, */ composeEnhancers(
-    applyMiddleware(logger, thunk.withExtraArgument({getFirebase, getFirestore})),
+  /* preloadedState, */ composeEnhancers(
+    applyMiddleware(logger, thunk.withExtraArgument({ getFirebase, getFirestore })),
     reduxFirestore(fbConfig),
     reactReduxFirebase(fbConfig)
-));
+  ));
 
 export default store;
