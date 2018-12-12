@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import { firestoreReducer } from 'redux-firestore';
 import { firebaseReducer } from 'react-redux-firebase';
-import carsReducer from './carsReducer';
+import { routerReducer } from 'react-router-redux';
 import authReducer from './authReducer';
 
 const rootReducer = combineReducers({
   authReducer: authReducer,
-  carsReducer: carsReducer,
   firestoreReducer: firestoreReducer,
-  firebaseReducer: firebaseReducer
+  firebaseReducer: firebaseReducer,
+  routing: routerReducer
 });
 
 export default rootReducer;

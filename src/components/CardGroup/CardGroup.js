@@ -22,11 +22,8 @@ class CarCardGroup extends Component {
         bodyType: PropTypes.string,
         transmission: PropTypes.string
       })
-    )
-  };
-
-  static defaultProps = {
-    cars: []
+    ),
+    match: PropTypes.object
   };
 
   render () {
@@ -39,7 +36,7 @@ class CarCardGroup extends Component {
           ? 'Loading...'
           : <Card.Group>
             {cars.map(car => (
-              <CarCard key={car.id} car={car} />
+              <CarCard key={car.id} car={car} match={this.props.match} />
             ))
             }
           </Card.Group>

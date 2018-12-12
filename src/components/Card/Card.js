@@ -8,10 +8,6 @@ class CarCard extends Component {
     car: PropTypes.object
   };
 
-  static defaultProps = {
-    car: null
-  };
-
   editCar = () => {
   };
 
@@ -40,9 +36,9 @@ class CarCard extends Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={'/cars/' + car.id}>
+          <Link to={car.id + '/car/'}>
             <Icon name='list layout' />
-            service info
+            Service info
           </Link>
         </Card.Content>
       </Card>

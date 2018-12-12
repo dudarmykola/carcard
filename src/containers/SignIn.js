@@ -4,13 +4,14 @@ import { signIn } from '../actions/authActions';
 
 const mapStateToProps = state => {
   return {
-    authError: state.authReducer.authError
+    authError: state.authReducer.authError,
+    auth: state.firebaseReducer.auth
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    signIn: creads => dispatch(signIn(creads))
+    signIn: credentials => dispatch(signIn(credentials))
   };
 };
 
