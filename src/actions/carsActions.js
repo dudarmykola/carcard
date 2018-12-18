@@ -1,9 +1,10 @@
 import { ADD_CAR, EDIT_CAR } from './actionTypes';
 
-export const addCar = car => {
+export const addCar = (uid, car) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    firestore.collection('cars').add({
+
+    firestore.collection(uid).add({
       ...car
     }).then(data => {
       dispatch({

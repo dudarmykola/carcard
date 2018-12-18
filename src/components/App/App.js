@@ -10,6 +10,7 @@ import CarCardGroup from '../../containers/CardGroup';
 import SignUp from '../../containers/SignUp';
 import SignIn from '../../containers/SignIn';
 import { history } from '../../store/store';
+import Car from '../../containers/Car';
 
 class App extends Component {
   static propTypes = {
@@ -31,7 +32,8 @@ class App extends Component {
               <Route exact path='/' render={() => <Redirect to='/SignIn' />} />
               <Route path='/SignIn' component={SignIn} />
               <Route path='/SignUp' component={SignUp} />
-              <PrivateRoute path='/User/:id/Cars' component={CarCardGroup} />
+              <PrivateRoute exact path='/User/:id/Cars' component={CarCardGroup} />
+              <PrivateRoute exact path='/User/:id/Cars/:carId/car' component={Car} />
             </Switch>
           </div>
         </ConnectedRouter>
