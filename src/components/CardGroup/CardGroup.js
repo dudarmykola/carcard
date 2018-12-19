@@ -1,50 +1,38 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Card } from 'semantic-ui-react';
+import { Container, Card } from 'semantic-ui-react';
 import CarCard from '../../containers/CarCard';
 import AddCar from '../../containers/AddCar';
+import { isLoaded, isEmpty } from 'react-redux-firebase';
 
 class CarCardGroup extends Component {
   static propTypes = {
-    cars: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        fuel: PropTypes.string,
-        year: PropTypes.number,
-        brand: PropTypes.string,
-        model: PropTypes.string,
-        color: PropTypes.string,
-        engine: PropTypes.oneOfType([
-          PropTypes.string,
-          PropTypes.number
-        ]),
-        bodyType: PropTypes.string,
-        transmission: PropTypes.string
-      })
-    )
+    cars: PropTypes.object,
+    match: PropTypes.object,
+    uid: PropTypes.string
   };
 
-  static defaultProps = {
-    cars: []
-  };
+  renderCars (cars) {
+    return Object.keys(cars).map(key => (
+      <CarCard key={key} car={Object.assign({ id: key }, cars[key])} match={this.props.match} />
+    ));
+  }
 
   render () {
-    const { cars } = this.props;
+    const { cars, uid } = this.props;
+
+    const cardList = !isLoaded(cars)
+      ? 'Loading'
+      : isEmpty(cars)
+        ? 'Cars list is empty'
+        : this.renderCars(cars);
 
     return (
-      <>
-        <AddCar />
-        {!cars
-          ? 'Loading...'
-          : <Card.Group>
-            {cars.map(car => (
-              <CarCard key={car.id} car={car} />
-            ))
-            }
-          </Card.Group>
-        }
-      </>
+      <Container>
+        <AddCar uid={uid} />
+        <Card.Group>{ cardList }</Card.Group>
+      </Container>
     );
   }
 }

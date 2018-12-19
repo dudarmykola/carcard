@@ -5,18 +5,15 @@ import { Link } from 'react-router-dom';
 
 class CarCard extends Component {
   static propTypes = {
-    car: PropTypes.object
-  };
-
-  static defaultProps = {
-    car: null
+    car: PropTypes.object,
+    match: PropTypes.object
   };
 
   editCar = () => {
   };
 
   render () {
-    const { car } = this.props;
+    const { car, match } = this.props;
 
     return (
       <Card>
@@ -40,9 +37,9 @@ class CarCard extends Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={'/cars/' + car.id}>
+          <Link to={match.url + car.id + '/car/'}>
             <Icon name='list layout' />
-            service info
+            Service info
           </Link>
         </Card.Content>
       </Card>

@@ -1,25 +1,31 @@
-import { ADD_CAR, ADD_CAR_ERROR, REMOVE_CAR, EDIT_CAR } from '../actions/actionTypes';
+import { ADD_CAR, ADD_DETAILS_ERROR, ADD_DETAILS_SUCCESS } from '../actions/actionTypes';
 
 const initialState = {
-  car: null
+  isOpen: false,
+  addDetailsError: null
 };
 
-export default (state = initialState, action) => {
+const carsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CAR:
-      return state;
-    case EDIT_CAR:
-      return {
-        car: action.payload
-      };
-    case ADD_CAR_ERROR:
-      return state;
-    case REMOVE_CAR:
       return {
         ...state,
-        cars: state.cars.filter(o => o.carId !== action.payload)
+        isOpen: false
+      };
+    case ADD_DETAILS_SUCCESS:
+      return {
+        ...state,
+        addDetailsError: null
+      };
+    case ADD_DETAILS_ERROR:
+      return {
+        ...state,
+        addDetailsError: action.err.message
       };
     default:
       return state;
   }
 };
+
+export default carsReducer;
+

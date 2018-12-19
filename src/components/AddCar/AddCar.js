@@ -12,7 +12,6 @@ import {
 } from '../../constants/car';
 
 const defaultState = {
-  open: false,
   car: {
     fuel: null,
     year: null,
@@ -27,27 +26,38 @@ const defaultState = {
 
 class AddCar extends Component {
   static propTypes = {
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    uid: PropTypes.string
   };
 
-  state = defaultState;
+  constructor (props) {
+    super(props);
 
-  show = size => () => {
+    this.show = this.show.bind(this);
+    this.close = this.close.bind(this);
+    this.handleAddCar = this.handleAddCar.bind(this);
+
+    this.state = defaultState;
+    this.state.open = false;
+  }
+
+  show (size) {
     this.setState({
       size,
       open: true
     });
+  }
+
+  close () {
+    this.setState({
+      ...defaultState,
+      open: false
+    });
   };
 
-  close = () => {
-    this.setState(defaultState);
-  };
-
-  handleAddCar = () => {
+  handleAddCar () {
     const newCar = Object.assign({}, this.state.car);
-    newCar.year = parseInt(this.state.car.year, 0);
-    newCar.engine = parseInt(this.state.car.engine).toFixed(1);
-    this.props.dispatch(addCar(newCar));
+    this.props.dispatch(addCar(this.props.uid, newCar));
   };
 
   handleChange = (e, { value, inputname }) => {
@@ -61,11 +71,12 @@ class AddCar extends Component {
   };
 
   render () {
-    const { open, size } = this.state;
+    const { size } = this.state;
+    const open = this.state.open;
 
     return (
       <>
-        <Button onClick={this.show('small')}>Add car</Button>
+        <Button onClick={() => this.show('small')}>Add car</Button>
         <Modal size={size} open={open} onClose={this.close}>
           <Modal.Header>Add car to your account</Modal.Header>
           <Modal.Content>
@@ -169,7 +180,7 @@ class AddCar extends Component {
             </Form>
           </Modal.Content>
           <Modal.Actions>
-            <Button onClick={this.close} negative>No</Button>
+            <Button onClick={this.close} content='Cancel' negative />
             <Button positive icon='checkmark' labelPosition='right' content='Yes' onClick={this.handleAddCar} />
           </Modal.Actions>
         </Modal>

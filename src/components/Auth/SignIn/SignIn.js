@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import './SignIn.scss';
 
 class SignIn extends Component {
   static propTypes = {
-    signIn: PropTypes.func.isRequired,
-    authError: PropTypes.string
+    auth: PropTypes.object.isRequired,
+    authError: PropTypes.string,
+    signIn: PropTypes.func.isRequired
   };
 
   state = {
@@ -26,7 +27,10 @@ class SignIn extends Component {
   };
 
   render () {
-    const { authError } = this.props;
+    const { auth, authError } = this.props;
+
+    if (auth.uid) return <Redirect to={'User/' + auth.uid + '/Cars/'} />;
+
     return (
       <div className='login-form'>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
