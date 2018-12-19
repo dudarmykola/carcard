@@ -3,18 +3,30 @@ import PropTypes from 'prop-types';
 import { isLoaded, isEmpty } from 'react-redux-firebase';
 import { Container, Form, Button, Icon, Table, Message } from 'semantic-ui-react';
 
+const initialState = {
+  km: '',
+  description: [],
+  errorKm: '',
+  errorDescription: []
+};
+
 class Car extends Component {
   static propTypes = {
-    details: PropTypes.object
+    details: PropTypes.object,
+    addDetails: PropTypes.func,
+    match: PropTypes.object,
+    addDetailsError: PropTypes.string
   };
 
-  state = {
-    newDetails: [],
-    errorMessage: {
-      km: '',
-      description: ''
-    }
-  };
+  constructor (props) {
+    super(props);
+
+    this.state = initialState;
+
+    this.validate = this.validate.bind(this);
+    this.validateArray = this.validateArray.bind(this);
+    this.handleSubmitNewDetail = this.handleSubmitNewDetail.bind(this);
+  }
 
   renderDetails (details) {
     return (
@@ -42,30 +54,84 @@ class Car extends Component {
     );
   }
 
-  handleAddNewInput () {
+  handleAddNewInput (e) {
+    e.preventDefault();
     this.setState({
-      newDetails: [ ...this.state.newDetails, '' ]
+      description: [ ...this.state.description, '' ]
     });
   }
 
   handleRemoveNewInput (index) {
-    this.state.newDetails.splice(index, 1);
+    this.state.description.splice(index, 1);
     this.setState({
-      newDetails: this.state.newDetails
+      description: this.state.description
     });
   }
 
   handleChangeDetail (e, index) {
-    this.state.newDetails[index] = e.target.value;
+    this.state.description[index] = e.target.value;
     this.setState({
-      newDetails: this.state.newDetails
+      description: this.state.description
     });
   }
 
-  handleSubmitNewDetail (e) {}
+  handleChange = (e, { value }) => {
+    (this.state.km !== value) &&
+    this.setState({
+      km: value
+    });
+  };
+
+  isNormalInteger (str) {
+    const reg = new RegExp('^[0-9]+$');
+    return reg.test(str);
+  }
+  validateArray (arr) {
+    let newArr = arr.filter(v => v !== '');
+    return !!newArr.length;
+  }
+
+  validate () {
+    let errorKm = '';
+    let errorDescription = [];
+
+    if (!this.isNormalInteger(this.state.km)) {
+      errorKm = 'invalid number';
+    }
+
+    this.state.description.forEach(item => {
+      if (item.length < 3 || item.length >= 120) {
+        errorDescription.push('Min length 3 and max 120');
+      } else {
+        errorDescription.push('');
+      }
+    });
+
+    if (errorKm || this.validateArray(errorDescription)) {
+      this.setState({
+        errorKm,
+        errorDescription: [ ...errorDescription ]
+      });
+      return false;
+    }
+
+    return true;
+  }
+
+  handleSubmitNewDetail () {
+    const isValid = this.validate();
+
+    if (isValid) {
+      const newDetails = {};
+
+      newDetails[this.state.km] = this.state.description;
+      this.props.addDetails(this.props.match.params.id, this.props.match.params.carId, newDetails);
+      this.setState(initialState);
+    }
+  }
 
   render () {
-    const { details } = this.props;
+    const { details, addDetailsError } = this.props;
 
     const detailsList = !isLoaded(details)
       ? 'Loading'
@@ -75,14 +141,20 @@ class Car extends Component {
 
     return (
       <Container>
-        <Form onSubmit={e => this.handleSubmitNewDetail(e)}>
+        <Form onSubmit={this.handleSubmitNewDetail}>
           <Form.Group>
             <div>
-              <Form.Input fluid label='kilometrage/mileage' placeholder='km/mi' />
+              <Form.Input
+                fluid
+                label='kilometrage/mileage'
+                placeholder='km/mi'
+                value={this.state.km}
+                onChange={this.handleChange}
+              />
               <Message
-                hidden={!this.state.errorMessage.km}
+                hidden={!this.state.errorKm}
                 size='small'
-                content={this.state.errorMessage.km}
+                content={this.state.errorKm}
                 negative
               />
             </div>
@@ -93,7 +165,7 @@ class Car extends Component {
             </div>
             <Form.Group grouped>
               {
-                this.state.newDetails.map((newDetail, i) => {
+                this.state.description.map((newDetail, i) => {
                   return (
                     <Form.Group key={i} grouped>
                       <Form.Group>
@@ -101,12 +173,12 @@ class Car extends Component {
                           value={newDetail}
                           onChange={e => this.handleChangeDetail(e, i)}
                         />
-                        <Icon name='remove' onClick={() => this.handleRemoveNewInput(i)} />
+                        <Icon name='remove' onClick={e => this.handleRemoveNewInput(i)} />
                       </Form.Group>
                       <Message
-                        hidden={!this.state.errorMessage.description}
+                        hidden={!this.state.errorDescription[i]}
                         size='small'
-                        content={this.state.errorMessage.description}
+                        content={this.state.errorDescription[i]}
                         negative
                       />
                     </Form.Group>
@@ -117,6 +189,11 @@ class Car extends Component {
           </Form.Group>
           <Form.Button type='submit'>Add</Form.Button>
         </Form>
+        { addDetailsError && (
+          <Message negative>
+            <p>{addDetailsError}</p>
+          </Message>
+        )}
         <div>
           { detailsList }
         </div>

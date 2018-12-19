@@ -27,8 +27,7 @@ const defaultState = {
 class AddCar extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
-    uid: PropTypes.string,
-    isOpen: PropTypes.bool
+    uid: PropTypes.string
   };
 
   constructor (props) {
@@ -39,7 +38,7 @@ class AddCar extends Component {
     this.handleAddCar = this.handleAddCar.bind(this);
 
     this.state = defaultState;
-    this.state.open = props.isOpen;
+    this.state.open = false;
   }
 
   show (size) {
