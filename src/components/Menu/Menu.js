@@ -5,7 +5,7 @@ import { signOut } from '../../actions/authActions';
 import { Menu, Icon, Image, Segment, Header } from 'semantic-ui-react';
 import './Menu.scss';
 
-const square = { width: 35, height: 35 };
+const square = { width: 25, height: 25 };
 
 const MenuComponent = props => (
   <Menu className='main-header'>
@@ -19,7 +19,7 @@ const MenuComponent = props => (
         </Segment>
       </Menu.Item>
       <Menu.Item name='signup' className='main-header__sign-out'>
-        <Icon name='log out' className='icon' onClick={props.signOut} />
+        <Icon name='log out' className='icon' color='grey' onClick={props.signOut} />
       </Menu.Item>
     </Menu.Menu>
   </Menu>
