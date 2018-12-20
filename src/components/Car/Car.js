@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isLoaded, isEmpty } from 'react-redux-firebase';
-import { Container, Form, Button, Icon, Table, Message } from 'semantic-ui-react';
+import { Container, Form, Button, Icon, Table, Message, Segment } from 'semantic-ui-react';
+import './Car.scss';
 
 const initialState = {
   km: '',
@@ -30,11 +31,11 @@ class Car extends Component {
 
   renderDetails (details) {
     return (
-      <Table celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>kilometrage/mileage</Table.HeaderCell>
-            <Table.HeaderCell>Description</Table.HeaderCell>
+      <Table celled className='details-table'>
+        <Table.Header className='details-table__header'>
+          <Table.Row className='details-table__header__row'>
+            <Table.HeaderCell width='4' className='cell'>kilometrage/mileage</Table.HeaderCell>
+            <Table.HeaderCell width='12' className='cell'>Description</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -141,60 +142,63 @@ class Car extends Component {
 
     return (
       <Container>
-        <Form onSubmit={this.handleSubmitNewDetail}>
-          <Form.Group>
-            <div>
-              <Form.Input
-                fluid
-                label='kilometrage/mileage'
-                placeholder='km/mi'
-                value={this.state.km}
-                onChange={this.handleChange}
-              />
-              <Message
-                hidden={!this.state.errorKm}
-                size='small'
-                content={this.state.errorKm}
-                negative
-              />
-            </div>
-            <div>
-              <Button icon onClick={e => this.handleAddNewInput(e)}>
-                <Icon name='plus' />
-              </Button>
-            </div>
-            <Form.Group grouped>
-              {
-                this.state.description.map((newDetail, i) => {
-                  return (
-                    <Form.Group key={i} grouped>
-                      <Form.Group>
-                        <Form.Input
-                          value={newDetail}
-                          onChange={e => this.handleChangeDetail(e, i)}
+        <Segment>
+          <Form onSubmit={this.handleSubmitNewDetail}>
+            <Form.Group>
+              <div>
+                <Form.Input
+                  fluid
+                  label='kilometrage/mileage'
+                  placeholder='km/mi'
+                  value={this.state.km}
+                  onChange={this.handleChange}
+                />
+                <Message
+                  hidden={!this.state.errorKm}
+                  size='small'
+                  content={this.state.errorKm}
+                  negative
+                />
+              </div>
+              <div>
+                <Button icon onClick={e => this.handleAddNewInput(e)}>
+                  <Icon name='plus' title='add description' />
+                </Button>
+              </div>
+              <Form.Group grouped>
+                {
+                  this.state.description.map((newDetail, i) => {
+                    return (
+                      <Form.Group key={i} grouped>
+                        <Form.Group>
+                          <Form.Input
+                            value={newDetail}
+                            onChange={e => this.handleChangeDetail(e, i)}
+                          />
+                          <Icon name='remove' onClick={e => this.handleRemoveNewInput(i)} />
+                        </Form.Group>
+                        <Message
+                          hidden={!this.state.errorDescription[i]}
+                          size='small'
+                          content={this.state.errorDescription[i]}
+                          negative
                         />
-                        <Icon name='remove' onClick={e => this.handleRemoveNewInput(i)} />
                       </Form.Group>
-                      <Message
-                        hidden={!this.state.errorDescription[i]}
-                        size='small'
-                        content={this.state.errorDescription[i]}
-                        negative
-                      />
-                    </Form.Group>
-                  );
-                })
-              }
+                    );
+                  })
+                }
+              </Form.Group>
             </Form.Group>
-          </Form.Group>
-          <Form.Button type='submit'>Add</Form.Button>
-        </Form>
+            <Form.Button type='submit'>Add service record</Form.Button>
+          </Form>
+        </Segment>
+
         { addDetailsError && (
           <Message negative>
             <p>{addDetailsError}</p>
           </Message>
         )}
-        <div>
+        <div className='details-table-wrapper'>
           { detailsList }
         </div>
       </Container>

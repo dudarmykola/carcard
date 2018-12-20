@@ -76,9 +76,15 @@ class AddCar extends Component {
 
     return (
       <>
-        <Button onClick={() => this.show('small')}>Add car</Button>
+        <Button
+          color='teal'
+          content='Add car'
+          icon='add'
+          labelPosition='left'
+          onClick={() => this.show('small')}
+        />
         <Modal size={size} open={open} onClose={this.close}>
-          <Modal.Header>Add car to your account</Modal.Header>
+          <Modal.Header>Vehicle identification</Modal.Header>
           <Modal.Content>
             <Form>
               <Form.Group widths='equal'>

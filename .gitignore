@@ -3,6 +3,9 @@
 .idea
 .vscode
 
+src/**/*.css
+src/**/*.css.map
+
 # dependencies
 /node_modules
 /.pnp

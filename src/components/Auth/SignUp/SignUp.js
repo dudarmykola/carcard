@@ -37,7 +37,7 @@ class SignUp extends Component {
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='teal' textAlign='center'>
-              <Image src='/logo.png' /> Registration
+              <Image src={`${process.env.PUBLIC_URL}/images/logo/logo.png`} /> Registration
             </Header>
             <Form
               size='large'
@@ -63,7 +63,7 @@ class SignUp extends Component {
                 <Form.Input
                   id='email'
                   fluid
-                  icon='user'
+                  icon='mail'
                   iconPosition='left'
                   placeholder='E-mail address'
                   onChange={this.handleChange}

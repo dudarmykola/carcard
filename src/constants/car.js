@@ -6,7 +6,9 @@ export const OPTIONS_BODY = [
   { key: 'ca', text: 'Cabriolet', value: 'cabriolet' },
   { key: 'w', text: 'Wagon', value: 'wagon' },
   { key: 'suv', text: 'Suv', value: 'suv' },
-  { key: 'p', text: 'Pickup', value: 'pickup' }
+  { key: 'p', text: 'Pickup', value: 'pickup' },
+  { key: 'v', text: 'Van', value: 'van' },
+  { key: 'mv', text: 'Minivan', value: 'minivan' }
 ];
 
 export const OPTIONS_LAYOUT = [
@@ -48,7 +50,7 @@ export const OPTIONS_YEAR = (() => {
 export const OPTIONS_COLOR = [
   { key: 'white', text: 'White', value: 'white' },
   { key: 'black', text: 'Black', value: 'black' },
-  { key: 'gray', text: 'Gray', value: 'gray' },
+  { key: 'grey', text: 'Grey', value: 'grey' },
   { key: 'red', text: 'Red', value: 'red' },
   { key: 'orange', text: 'Orange', value: 'orange' },
   { key: 'yellow', text: 'Yellow', value: 'yellow' },
