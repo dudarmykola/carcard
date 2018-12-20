@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import DescriptionList from '../../components/DescriptionList';
+import { Item, Button, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import './Card.scss';
 
 class CarCard extends Component {
   static propTypes = {
@@ -9,40 +11,41 @@ class CarCard extends Component {
     match: PropTypes.object
   };
 
-  editCar = () => {
-  };
-
   render () {
     const { car, match } = this.props;
 
     return (
-      <Card>
-        <Image src={car.img} />
-        <Card.Content>
-          <Card.Header>
-            <span>{car.brand} {car.model}</span>
-            <Icon name='edit' onClick={this.editCar} />
-          </Card.Header>
-          <Card.Meta>
-            <span className='date'>{car.year}</span>
-          </Card.Meta>
-          <Card.Description>
-            <ul>
-              <li>bodyType: {car.bodyType}</li>
-              <li>fuel: {car.fuel}</li>
-              <li>engine: {car.engine}</li>
-              <li>color: {car.color}</li>
-              <li>transmission: {car.transmission}</li>
-            </ul>
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <Link to={match.url + car.id + '/car/'}>
-            <Icon name='list layout' />
-            Service info
-          </Link>
-        </Card.Content>
-      </Card>
+      <Item>
+        <Item.Image src={car.img || `${process.env.PUBLIC_URL}/images/default/def-image.png`} />
+        <Item.Content>
+          <Item.Header as='a'>{car.brand} {car.model}</Item.Header>
+          <Item.Meta>
+            <span className='year'>{car.year}</span>
+          </Item.Meta>
+          <Item.Description>
+            <DescriptionList {...car} />
+          </Item.Description>
+          <Item.Extra>
+            <Link to={match.url + car.id + '/car/'}>
+              <Button content='Service history' icon='right chevron' labelPosition='right' floated='right' />
+            </Link>
+            {
+              car.color && (
+                <Label color={car.color} horizontal>
+                  {car.color}
+                </Label>
+              )
+            }
+            {
+              car.bodyType && (
+                <Label className='body-type' image>
+                  <img className='body-type__image' src={`${process.env.PUBLIC_URL}/images/body/${car.bodyType}.svg`} />
+                  <span className='body-type__desc'>{car.bodyType}</span>
+                </Label>)
+            }
+          </Item.Extra>
+        </Item.Content>
+      </Item>
     );
   }
 }

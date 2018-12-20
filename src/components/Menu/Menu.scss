@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+.main-header {
+  height: $header-height;
+  margin-bottom: 0 !important;
+  &__logo {
+    width: 100px;
+  }
+  &__sign-out {
+    >.icon {
+      font-size: 32px;
+      cursor: pointer;
+    }
+  }
+}
+.user-circle {
+  padding: 20px !important;
+  cursor: pointer;
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px !important;
+    line-height: 30px !important;
+  }
+}

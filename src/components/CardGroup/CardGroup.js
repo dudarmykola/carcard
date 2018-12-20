@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Card } from 'semantic-ui-react';
+import { Container, Item, Segment, Loader } from 'semantic-ui-react';
 import CarCard from '../../containers/CarCard';
 import AddCar from '../../containers/AddCar';
+import EmptyList from '../../components/EmptyList';
 import { isLoaded, isEmpty } from 'react-redux-firebase';
+import './CardGroup.scss';
 
 class CarCardGroup extends Component {
   static propTypes = {
@@ -23,15 +25,17 @@ class CarCardGroup extends Component {
     const { cars, uid } = this.props;
 
     const cardList = !isLoaded(cars)
-      ? 'Loading'
+      ? <Loader active />
       : isEmpty(cars)
-        ? 'Cars list is empty'
+        ? <EmptyList />
         : this.renderCars(cars);
 
     return (
       <Container>
-        <AddCar uid={uid} />
-        <Card.Group>{ cardList }</Card.Group>
+        <Segment className='add-car-container'>
+          <AddCar uid={uid} />
+        </Segment>
+        <Item.Group divided className='card-list-container'>{ cardList }</Item.Group>
       </Container>
     );
   }
