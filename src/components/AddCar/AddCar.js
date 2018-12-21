@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addCar } from '../../actions/carsActions';
-import { Button, Modal, Form, Input, Radio, Select } from 'semantic-ui-react';
+import { Button, Modal, Form, Input, Radio, Select, Message } from 'semantic-ui-react';
 import {
   OPTIONS_BODY,
   OPTIONS_COLOR,
@@ -10,6 +9,7 @@ import {
   OPTIONS_TRANSMISSION,
   OPTIONS_YEAR
 } from '../../constants/car';
+import './AddCar.scss';
 
 const defaultState = {
   car: {
@@ -21,13 +21,20 @@ const defaultState = {
     engine: null,
     bodyType: null,
     transmission: null
+  },
+  errors: {
+    brand: '',
+    model: ''
   }
 };
 
 class AddCar extends Component {
   static propTypes = {
-    dispatch: PropTypes.func,
-    uid: PropTypes.string
+    addCar: PropTypes.func,
+    openModal: PropTypes.func,
+    closeModal: PropTypes.func,
+    uid: PropTypes.string,
+    open: PropTypes.bool
   };
 
   constructor (props) {
@@ -35,6 +42,7 @@ class AddCar extends Component {
 
     this.show = this.show.bind(this);
     this.close = this.close.bind(this);
+    this.validate = this.validate.bind(this);
     this.handleAddCar = this.handleAddCar.bind(this);
 
     this.state = defaultState;
@@ -42,22 +50,55 @@ class AddCar extends Component {
   }
 
   show (size) {
+    this.props.openModal();
     this.setState({
-      size,
-      open: true
+      size
     });
   }
 
   close () {
+    this.props.closeModal();
     this.setState({
-      ...defaultState,
-      open: false
+      ...defaultState
     });
   };
 
+  validate () {
+    let brand = '';
+    let model = '';
+
+    if (!this.state.car.brand) {
+      brand = 'this field is required';
+    } else if (this.state.car.brand.length > 120) {
+      brand = 'max length 120';
+    }
+
+    if (!this.state.car.model) {
+      model = 'this field is required';
+    } else if (this.state.car.model.length > 120) {
+      model = 'max length 120';
+    }
+
+    if (brand || model) {
+      this.setState({
+        errors: {
+          brand: brand,
+          model: model
+        }
+      });
+      return false;
+    }
+
+    return true;
+  }
+
   handleAddCar () {
-    const newCar = Object.assign({}, this.state.car);
-    this.props.dispatch(addCar(this.props.uid, newCar));
+    const isValid = this.validate();
+
+    if (isValid) {
+      const newCar = Object.assign({}, this.state.car);
+      this.props.addCar(this.props.uid, newCar);
+    }
   };
 
   handleChange = (e, { value, inputname }) => {
@@ -72,7 +113,7 @@ class AddCar extends Component {
 
   render () {
     const { size } = this.state;
-    const open = this.state.open;
+    const open = this.props.open;
 
     return (
       <>
@@ -83,9 +124,9 @@ class AddCar extends Component {
           labelPosition='left'
           onClick={() => this.show('small')}
         />
-        <Modal size={size} open={open} onClose={this.close}>
-          <Modal.Header>Vehicle identification</Modal.Header>
-          <Modal.Content>
+        <Modal size={size} open={open} onClose={this.close} className='add-car-modal'>
+          <Modal.Header className='add-car-modal__header'>Vehicle identification</Modal.Header>
+          <Modal.Content className='add-car-modal__content'>
             <Form>
               <Form.Group widths='equal'>
                 <Form.Field
@@ -95,12 +136,24 @@ class AddCar extends Component {
                   inputname='brand'
                   onChange={this.handleChange}
                 />
+                <Message
+                  hidden={!this.state.errors.brand}
+                  size='small'
+                  content={this.state.errors.brand}
+                  negative
+                />
                 <Form.Field
                   control={Input}
                   label='Model'
                   placeholder='Model'
                   inputname='model'
                   onChange={this.handleChange}
+                />
+                <Message
+                  hidden={!this.state.errors.model}
+                  size='small'
+                  content={this.state.errors.model}
+                  negative
                 />
               </Form.Group>
               <Form.Group>
@@ -135,11 +188,14 @@ class AddCar extends Component {
               <Form.Group inline>
                 <Form.Field
                   control={Input}
-                  type='Number'
+                  type='number'
+                  max='12'
+                  min='1'
+                  step='0.1'
                   label='Engine'
                   inputname='engine'
-                  placeholder='l'
                   onChange={this.handleChange}
+                  placeholder='Choose'
                 />
                 <Form.Field
                   control={Select}

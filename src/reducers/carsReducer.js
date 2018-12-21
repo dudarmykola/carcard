@@ -1,7 +1,13 @@
-import { ADD_CAR, ADD_DETAILS_ERROR, ADD_DETAILS_SUCCESS } from '../actions/actionTypes';
+import {
+  ADD_CAR,
+  ADD_DETAILS_ERROR,
+  ADD_DETAILS_SUCCESS,
+  OPEN_ADD_CAR,
+  CLOSE_ADD_CAR
+} from '../actions/actionTypes';
 
 const initialState = {
-  isOpen: false,
+  open: false,
   addDetailsError: null
 };
 
@@ -10,7 +16,7 @@ const carsReducer = (state = initialState, action) => {
     case ADD_CAR:
       return {
         ...state,
-        isOpen: false
+        open: false
       };
     case ADD_DETAILS_SUCCESS:
       return {
@@ -21,6 +27,16 @@ const carsReducer = (state = initialState, action) => {
       return {
         ...state,
         addDetailsError: action.err.message
+      };
+    case OPEN_ADD_CAR:
+      return {
+        ...state,
+        open: action.payload
+      };
+    case CLOSE_ADD_CAR:
+      return {
+        ...state,
+        open: action.payload
       };
     default:
       return state;

@@ -1,4 +1,10 @@
-import { ADD_CAR, EDIT_CAR, ADD_DETAILS_SUCCESS, ADD_DETAILS_ERROR } from './actionTypes';
+import {
+  ADD_CAR,
+  EDIT_CAR,
+  ADD_DETAILS_SUCCESS,
+  ADD_DETAILS_ERROR,
+  OPEN_ADD_CAR,
+  CLOSE_ADD_CAR } from './actionTypes';
 
 export const addCar = (uid, car) => {
   return (dispatch, getState, { getFirestore }) => {
@@ -6,10 +12,9 @@ export const addCar = (uid, car) => {
 
     firestore.collection(uid).add({
       ...car
-    }).then(data => {
+    }).then(() => {
       dispatch({
-        type: ADD_CAR,
-        payload: car
+        type: ADD_CAR
       });
     }).catch(err => {
       dispatch({
@@ -70,3 +75,22 @@ export const editCar = car => {
     });
   };
 };
+
+export const openModal = () => {
+  return dispatch => {
+    dispatch({
+      type: OPEN_ADD_CAR,
+      payload: true
+    });
+  };
+};
+
+export const closeModal = () => {
+  return dispatch => {
+    dispatch({
+      type: CLOSE_ADD_CAR,
+      payload: false
+    });
+  };
+};
+

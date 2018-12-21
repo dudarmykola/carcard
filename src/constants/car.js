@@ -50,6 +50,7 @@ export const OPTIONS_YEAR = (() => {
 export const OPTIONS_COLOR = [
   { key: 'white', text: 'White', value: 'white' },
   { key: 'black', text: 'Black', value: 'black' },
+  { key: 'brown', text: 'Brown', value: 'brown' },
   { key: 'grey', text: 'Grey', value: 'grey' },
   { key: 'red', text: 'Red', value: 'red' },
   { key: 'orange', text: 'Orange', value: 'orange' },

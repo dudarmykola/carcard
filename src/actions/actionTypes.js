@@ -10,3 +10,5 @@ export const SIGN_UP_ERROR = 'SIGN_UP_ERROR';
 export const EDIT_CAR_ERROR = 'EDIT_CAR_ERROR';
 export const ADD_DETAILS_SUCCESS = 'ADD_DETAILS_SUCCESS';
 export const ADD_DETAILS_ERROR = 'ADD_DETAILS_ERROR';
+export const OPEN_ADD_CAR = 'OPEN_ADD_CAR';
+export const CLOSE_ADD_CAR = 'CLOSE_ADD_CAR';

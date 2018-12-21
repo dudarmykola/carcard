@@ -15,7 +15,7 @@ const DescriptionList = props => {
       <List.Item>
         <List.Content>
           <List.Header>Engine:</List.Header>
-          <List.Description>{engine || <>&mdash;</>}</List.Description>
+          <List.Description>{(engine && engine + ' L') || <>&mdash;</>}</List.Description>
         </List.Content>
       </List.Item>
       <List.Item>

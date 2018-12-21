@@ -5,6 +5,9 @@
     "standard",
     "standard-react"
   ],
+  "ecmaFeatures": {
+    "jsx": true
+  },
   "plugins": [
     "babel",
     "react",

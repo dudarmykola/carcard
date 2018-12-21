@@ -27,11 +27,11 @@ class CarCardGroup extends Component {
     const cardList = !isLoaded(cars)
       ? <Loader active />
       : isEmpty(cars)
-        ? <EmptyList />
+        ? <EmptyList text='Cars list' />
         : this.renderCars(cars);
 
     return (
-      <Container>
+      <Container className='card-list-wrapper'>
         <Segment className='add-car-container'>
           <AddCar uid={uid} />
         </Segment>
