@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
 .app-container {
-  height: calc(100% - #{$header-height});
+  min-height: calc(100% - #{$header-height});
   position: relative;
 }

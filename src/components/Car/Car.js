@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isLoaded, isEmpty } from 'react-redux-firebase';
 import { Container, Form, Button, Icon, Table, Message, Segment } from 'semantic-ui-react';
 import './Car.scss';
+import EmptyList from '../EmptyList/EmptyList';
 
 const initialState = {
   km: '',
@@ -137,7 +138,7 @@ class Car extends Component {
     const detailsList = !isLoaded(details)
       ? 'Loading'
       : isEmpty(details)
-        ? 'Details list is empty'
+        ? <EmptyList text='Service history' />
         : this.renderDetails(details);
 
     return (
@@ -145,7 +146,7 @@ class Car extends Component {
         <Segment>
           <Form onSubmit={this.handleSubmitNewDetail}>
             <Form.Group>
-              <div>
+              <Fragment>
                 <Form.Input
                   fluid
                   label='kilometrage/mileage'
@@ -159,12 +160,12 @@ class Car extends Component {
                   content={this.state.errorKm}
                   negative
                 />
-              </div>
-              <div>
+              </Fragment>
+              <Fragment>
                 <Button icon onClick={e => this.handleAddNewInput(e)}>
                   <Icon name='plus' title='add description' />
                 </Button>
-              </div>
+              </Fragment>
               <Form.Group grouped>
                 {
                   this.state.description.map((newDetail, i) => {

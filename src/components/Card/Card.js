@@ -31,7 +31,7 @@ class CarCard extends Component {
             </Link>
             {
               car.color && (
-                <Label color={car.color} horizontal>
+                <Label color={car.color !== 'white' ? car.color : null} horizontal>
                   {car.color}
                 </Label>
               )
