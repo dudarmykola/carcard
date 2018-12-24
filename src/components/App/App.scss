@@ -3,4 +3,5 @@
 .app-container {
   min-height: calc(100% - #{$header-height});
   position: relative;
+  display: flex;
 }
