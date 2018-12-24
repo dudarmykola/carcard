@@ -32,9 +32,10 @@ export const addDetails = (uid, carId, newDetails) => {
     firestore.collection(uid).doc(carId).get().then(doc => {
       if (doc.exists) {
         const prevObj = doc.data();
+
         if (prevObj.details) {
           firestore.collection(uid).doc(carId).update({
-            details: Object.assign(prevObj.details, newDetails)
+            'details': Object.assign(prevObj.details, newDetails)
           }).then(() => {
             dispatch({
               type: ADD_DETAILS_SUCCESS
@@ -46,8 +47,8 @@ export const addDetails = (uid, carId, newDetails) => {
             });
           });
         } else {
-          firestore.collection(uid).doc(carId).set({
-            details: newDetails
+          firestore.collection(uid).doc(carId).update({
+            'details': newDetails
           });
         }
       } else {

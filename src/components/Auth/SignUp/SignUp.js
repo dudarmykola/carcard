@@ -35,8 +35,8 @@ class SignUp extends Component {
     return (
       <div className='login-form'>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='teal' textAlign='center'>
+          <Grid.Column className='login-form__container'>
+            <Header as='h2' color='teal' textAlign='center' className='login-form__title'>
               <Image src={`${process.env.PUBLIC_URL}/images/logo/logo.png`} /> Registration
             </Header>
             <Form

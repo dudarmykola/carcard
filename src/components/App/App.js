@@ -21,6 +21,7 @@ class App extends Component {
 
   render () {
     const { auth, store } = this.props;
+
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>

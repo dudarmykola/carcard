@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addCar: car => dispatch(addCar(car)),
+    addCar: (uid, car) => dispatch(addCar(uid, car)),
     openModal: open => dispatch(openModal(open)),
     closeModal: open => dispatch(closeModal(open))
   };
