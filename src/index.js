@@ -4,7 +4,7 @@ import './index.scss';
 import 'semantic-ui-css/semantic.min.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
-import store from './store/store';
+import { store } from './store/store';
 
 ReactDOM.render(
   <App store={store} />,
@@ -12,4 +12,3 @@ ReactDOM.render(
 );
 
 serviceWorker.unregister();
-

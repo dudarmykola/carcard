@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createHistory from 'history/createBrowserHistory';
-import logger from 'redux-logger';
 import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
 import { reduxFirestore, getFirestore } from 'redux-firestore';
@@ -10,13 +9,24 @@ import { routerMiddleware } from 'react-router-redux';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const history = createHistory();
+export const history = createHistory({
+  basename: process.env.PUBLIC_URL
+});
+
+const middlewares = [];
+
+if (process.env.NODE_ENV === `development`) {
+  const { logger } = require(`redux-logger`);
+
+  middlewares.push(logger);
+}
+middlewares.push(routerMiddleware(history), thunk.withExtraArgument({
+  getFirebase,
+  getFirestore
+}));
 
 const enhancer = composeEnhancers(
-  applyMiddleware(logger, routerMiddleware(history), thunk.withExtraArgument({
-    getFirebase,
-    getFirestore
-  })),
+  applyMiddleware(...middlewares),
   reduxFirestore(fbConfig),
   reactReduxFirebase(fbConfig, {
     useFirestoreForProfile: true,
@@ -26,7 +36,5 @@ const enhancer = composeEnhancers(
   })
 );
 
-const store = createStore(rootReducer, enhancer);
-
-export default store;
+export const store = createStore(rootReducer, enhancer);
 
