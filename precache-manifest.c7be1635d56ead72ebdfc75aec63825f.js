@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/carcard/static/media/outline-icons.cd6c777f.woff2"
   },
   {
-    "revision": "5c9fc6afa08ff3500153",
+    "revision": "1e95d8368b42ed5b5ac0",
     "url": "/carcard/static/css/main.fb3d5e73.chunk.css"
   },
   {
@@ -24,12 +24,12 @@ self.__precacheManifest = [
     "url": "/carcard/static/media/flags.9c74e172.png"
   },
   {
-    "revision": "0ab54153eeeca0ce03978cc463b257f7",
-    "url": "/carcard/static/media/icons.0ab54153.woff2"
-  },
-  {
     "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
     "url": "/carcard/static/media/icons.8e3c7f55.eot"
+  },
+  {
+    "revision": "0ab54153eeeca0ce03978cc463b257f7",
+    "url": "/carcard/static/media/icons.0ab54153.woff2"
   },
   {
     "revision": "faff92145777a3cbaf8e7367b4807987",
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/carcard/static/media/outline-icons.701ae6ab.eot"
   },
   {
-    "revision": "5c9fc6afa08ff3500153",
-    "url": "/carcard/static/js/main.5c9fc6af.chunk.js"
+    "revision": "1e95d8368b42ed5b5ac0",
+    "url": "/carcard/static/js/main.1e95d836.chunk.js"
   },
   {
     "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
@@ -56,16 +56,16 @@ self.__precacheManifest = [
     "url": "/carcard/static/media/outline-icons.ad97afd3.ttf"
   },
   {
-    "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
-    "url": "/carcard/static/media/outline-icons.82f60bd0.svg"
-  },
-  {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
     "url": "/carcard/static/media/brand-icons.13db00b7.eot"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
     "url": "/carcard/static/media/brand-icons.e8c322de.woff2"
+  },
+  {
+    "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
+    "url": "/carcard/static/media/outline-icons.82f60bd0.svg"
   },
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
     "url": "/carcard/static/css/1.aea114eb.chunk.css"
   },
   {
-    "revision": "697a6d89aa2c99e90f1d4ac5cc8c121c",
+    "revision": "da28fd1bf2ad32d2fdc7119ef1790c49",
     "url": "/carcard/index.html"
   }
 ];

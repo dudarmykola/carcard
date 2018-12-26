@@ -1,7 +1,7 @@
 {
   "main.css": "/carcard/static/css/main.fb3d5e73.chunk.css",
-  "main.js": "/carcard/static/js/main.5c9fc6af.chunk.js",
-  "main.js.map": "/carcard/static/js/main.5c9fc6af.chunk.js.map",
+  "main.js": "/carcard/static/js/main.1e95d836.chunk.js",
+  "main.js.map": "/carcard/static/js/main.1e95d836.chunk.js.map",
   "static/css/1.aea114eb.chunk.css": "/carcard/static/css/1.aea114eb.chunk.css",
   "static/js/1.d555f74f.chunk.js": "/carcard/static/js/1.d555f74f.chunk.js",
   "static/js/1.d555f74f.chunk.js.map": "/carcard/static/js/1.d555f74f.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/css/main.fb3d5e73.chunk.css.map": "/carcard/static/css/main.fb3d5e73.chunk.css.map",
   "static/css/1.aea114eb.chunk.css.map": "/carcard/static/css/1.aea114eb.chunk.css.map",
   "index.html": "/carcard/index.html",
-  "precache-manifest.5fa85332d1d03835e5113fcf36f03764.js": "/carcard/precache-manifest.5fa85332d1d03835e5113fcf36f03764.js",
+  "precache-manifest.c7be1635d56ead72ebdfc75aec63825f.js": "/carcard/precache-manifest.c7be1635d56ead72ebdfc75aec63825f.js",
   "service-worker.js": "/carcard/service-worker.js"
 }
