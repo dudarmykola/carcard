@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import createHistory from 'history/createBrowserHistory';
+import crateHashHistory from 'history/createHashHistory';
 import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
 import { reduxFirestore, getFirestore } from 'redux-firestore';
@@ -9,7 +9,7 @@ import { routerMiddleware } from 'react-router-redux';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const history = createHistory({
+export const history = crateHashHistory({
   basename: process.env.PUBLIC_URL
 });
 
