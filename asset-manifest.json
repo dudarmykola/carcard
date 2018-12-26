@@ -8,9 +8,9 @@
   "runtime~main.js": "/carcard/static/js/runtime~main.70418f09.js",
   "runtime~main.js.map": "/carcard/static/js/runtime~main.70418f09.js.map",
   "static/media/semantic.min.css": "/carcard/static/media/brand-icons.a1a749e8.svg",
-  "static/css/main.89ef0ccb.chunk.css.map": "/carcard/static/css/main.89ef0ccb.chunk.css.map",
   "static/css/1.25663136.chunk.css.map": "/carcard/static/css/1.25663136.chunk.css.map",
+  "static/css/main.89ef0ccb.chunk.css.map": "/carcard/static/css/main.89ef0ccb.chunk.css.map",
   "index.html": "/carcard/index.html",
-  "precache-manifest.d4d4d640d8499eea0123ae7cd9cb22ea.js": "/carcard/precache-manifest.d4d4d640d8499eea0123ae7cd9cb22ea.js",
+  "precache-manifest.d5887307f909a763e11c514f5884300f.js": "/carcard/precache-manifest.d5887307f909a763e11c514f5884300f.js",
   "service-worker.js": "/carcard/service-worker.js"
 }
