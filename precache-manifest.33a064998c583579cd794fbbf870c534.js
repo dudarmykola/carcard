@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/carcard/static/media/outline-icons.cd6c777f.woff2"
   },
   {
-    "revision": "4e656fa1a8377775b1bb",
+    "revision": "4c17e58c4675a61da2a5",
     "url": "/carcard/static/css/main.89ef0ccb.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/carcard/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "e4e21c34b71e58756f1f",
-    "url": "/carcard/static/js/1.e4e21c34.chunk.js"
+    "revision": "bf26d02147a4b051dbd7",
+    "url": "/carcard/static/js/1.bf26d021.chunk.js"
   },
   {
     "revision": "70418f095723343d3321",
@@ -24,12 +24,12 @@ self.__precacheManifest = [
     "url": "/carcard/static/media/flags.9c74e172.png"
   },
   {
-    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
-    "url": "/carcard/static/media/icons.8e3c7f55.eot"
-  },
-  {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
     "url": "/carcard/static/media/icons.0ab54153.woff2"
+  },
+  {
+    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
+    "url": "/carcard/static/media/icons.8e3c7f55.eot"
   },
   {
     "revision": "faff92145777a3cbaf8e7367b4807987",
@@ -44,28 +44,28 @@ self.__precacheManifest = [
     "url": "/carcard/static/media/outline-icons.701ae6ab.eot"
   },
   {
-    "revision": "4e656fa1a8377775b1bb",
-    "url": "/carcard/static/js/main.4e656fa1.chunk.js"
+    "revision": "4c17e58c4675a61da2a5",
+    "url": "/carcard/static/js/main.4c17e58c.chunk.js"
   },
   {
     "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
     "url": "/carcard/static/media/outline-icons.ef60a4f6.woff"
   },
   {
-    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
-    "url": "/carcard/static/media/outline-icons.ad97afd3.ttf"
-  },
-  {
     "revision": "962a1bf31c081691065fe333d9fa8105",
     "url": "/carcard/static/media/icons.962a1bf3.svg"
   },
   {
-    "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
-    "url": "/carcard/static/media/outline-icons.82f60bd0.svg"
+    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
+    "url": "/carcard/static/media/outline-icons.ad97afd3.ttf"
   },
   {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
     "url": "/carcard/static/media/brand-icons.13db00b7.eot"
+  },
+  {
+    "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
+    "url": "/carcard/static/media/outline-icons.82f60bd0.svg"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -80,11 +80,11 @@ self.__precacheManifest = [
     "url": "/carcard/static/media/brand-icons.c5ebe0b3.ttf"
   },
   {
-    "revision": "e4e21c34b71e58756f1f",
+    "revision": "bf26d02147a4b051dbd7",
     "url": "/carcard/static/css/1.25663136.chunk.css"
   },
   {
-    "revision": "6700462f6b43836a1afb3ad5b6d694c1",
+    "revision": "0df9680cb0f521be67fb258ed001cb50",
     "url": "/carcard/index.html"
   }
 ];
