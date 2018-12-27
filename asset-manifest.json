@@ -1,16 +1,16 @@
 {
-  "main.css": "/carcard/static/css/main.89ef0ccb.chunk.css",
-  "main.js": "/carcard/static/js/main.a68fcbc3.chunk.js",
-  "main.js.map": "/carcard/static/js/main.a68fcbc3.chunk.js.map",
+  "main.css": "/carcard/static/css/main.156ca3a9.chunk.css",
+  "main.js": "/carcard/static/js/main.529fb103.chunk.js",
+  "main.js.map": "/carcard/static/js/main.529fb103.chunk.js.map",
   "static/css/1.25663136.chunk.css": "/carcard/static/css/1.25663136.chunk.css",
-  "static/js/1.bf26d021.chunk.js": "/carcard/static/js/1.bf26d021.chunk.js",
-  "static/js/1.bf26d021.chunk.js.map": "/carcard/static/js/1.bf26d021.chunk.js.map",
+  "static/js/1.27beb929.chunk.js": "/carcard/static/js/1.27beb929.chunk.js",
+  "static/js/1.27beb929.chunk.js.map": "/carcard/static/js/1.27beb929.chunk.js.map",
   "runtime~main.js": "/carcard/static/js/runtime~main.70418f09.js",
   "runtime~main.js.map": "/carcard/static/js/runtime~main.70418f09.js.map",
   "static/media/semantic.min.css": "/carcard/static/media/brand-icons.a1a749e8.svg",
+  "static/css/main.156ca3a9.chunk.css.map": "/carcard/static/css/main.156ca3a9.chunk.css.map",
   "static/css/1.25663136.chunk.css.map": "/carcard/static/css/1.25663136.chunk.css.map",
-  "static/css/main.89ef0ccb.chunk.css.map": "/carcard/static/css/main.89ef0ccb.chunk.css.map",
   "index.html": "/carcard/index.html",
-  "precache-manifest.d5887307f909a763e11c514f5884300f.js": "/carcard/precache-manifest.d5887307f909a763e11c514f5884300f.js",
+  "precache-manifest.492c4f94ee131b57acd8d87f18b26b1c.js": "/carcard/precache-manifest.492c4f94ee131b57acd8d87f18b26b1c.js",
   "service-worker.js": "/carcard/service-worker.js"
 }
