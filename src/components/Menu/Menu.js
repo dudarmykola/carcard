@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { signOut } from '../../actions/authActions';
 import { Menu, Icon, Image, Segment, Header } from 'semantic-ui-react';
 import './Menu.scss';
@@ -10,7 +11,9 @@ const square = { width: 25, height: 25 };
 const MenuComponent = props => (
   <Menu className='main-header'>
     <Menu.Item name='home' className='main-header__logo'>
-      <Image src={`${process.env.PUBLIC_URL}/images/logo/logo.png`} />
+      <Link to={'/'}>
+        <Image src={`${process.env.PUBLIC_URL}/images/logo/logo.png`} alt='logo' />
+      </Link>
     </Menu.Item>
     <Menu.Menu position='right'>
       <Menu.Item name='user' className='main-header__user'>
