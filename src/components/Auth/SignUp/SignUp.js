@@ -37,7 +37,7 @@ class SignUp extends Component {
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column className='login-form__container'>
             <Header as='h2' color='teal' textAlign='center' className='login-form__title'>
-              <Image src={`${process.env.PUBLIC_URL}/images/logo/logo.png`} /> Registration
+              <Image src={`${process.env.PUBLIC_URL}/images/logo/logo.png`} alt='logo' /> Registration
             </Header>
             <Form
               size='large'
@@ -46,6 +46,7 @@ class SignUp extends Component {
               <Segment stacked>
                 <Form.Input
                   id='firstName'
+                  aria-label='first name'
                   fluid
                   icon='user'
                   iconPosition='left'
@@ -54,6 +55,7 @@ class SignUp extends Component {
                 />
                 <Form.Input
                   id='lastName'
+                  aria-label='last name'
                   fluid
                   icon='user'
                   iconPosition='left'
@@ -62,6 +64,7 @@ class SignUp extends Component {
                 />
                 <Form.Input
                   id='email'
+                  aria-label='email'
                   fluid
                   icon='mail'
                   iconPosition='left'
@@ -70,6 +73,7 @@ class SignUp extends Component {
                 />
                 <Form.Input
                   id='password'
+                  aria-label='password'
                   fluid
                   icon='lock'
                   iconPosition='left'
